@@ -1,0 +1,247 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=0">
+	<meta name="format-detection" content="telephone=no">
+	<title>Aquarius</title>
+	<link rel="stylesheet" href="css/style.css">
+	{% load static %}
+		<!--<link rel="stylesheet" href="{% static 'css/style.css' %}">-->
+</head>
+<script type="text/javascript">
+	function add_program()
+	{
+		let prg_num = programs.children.length + 1;
+
+		let prg = document.createElement('div');
+		prg.className = 'status__row status__row_3';
+
+		let prgNumber = document.createElement('div');
+		prgNumber.className = 'status__column npp';
+		prgNumberInput = document.createElement('input');
+		prgNumberInput.type = 'text';
+		prgNumberInput.value = prg_num.toString();
+		prgNumber.append(prgNumberInput);
+		prg.append(prgNumber);
+
+		let prgDays = document.createElement('div');
+		prgDays.className = 'status__column wdays';
+		prgDaysInput = document.createElement('input');
+		prgDaysInput.type = 'text';
+		prgDaysInput.value = '1234567 чн';
+		prgDaysInput.name = 'prg' + prg_num.toString() + '_days';
+		prgDays.append(prgDaysInput);
+		prg.append(prgDays);
+
+		let prgStartTime = document.createElement('div');
+		prgStartTime.className = 'status__column tbas';
+		prgStartTimeInput = document.createElement('input');
+		prgStartTimeInput.type = 'text';
+		prgStartTimeInput.value = '13:15';
+		prgStartTimeInput.name = 'prg' + prg_num.toString() + '_start_time';
+		prgStartTime.append(prgStartTimeInput);
+		prg.append(prgStartTime);
+
+		let prgTMin = document.createElement('div');
+		prgTMin.className = 'status__column tbas';
+		prgTMinInput = document.createElement('input');
+		prgTMinInput.type = 'text';
+		prgTMinInput.value = '10';
+		prgTMinInput.name = 'prg' + prg_num.toString() + '_t_min';
+		prgTMin.append(prgTMinInput);
+		prg.append(prgTMin);
+
+		let prgTMax = document.createElement('div');
+		prgTMax.className = 'status__column tbas';
+		prgTMaxInput = document.createElement('input');
+		prgTMaxInput.type = 'text';
+		prgTMaxInput.value = '20';
+		prgTMaxInput.name = 'prg' + prg_num.toString() + '_t_max';
+		prgTMax.append(prgTMaxInput);
+		prg.append(prgTMax);
+
+		programs.append(prg);
+
+	}
+
+	function save()
+	{
+		document.getElementById("channel_settings").submit();
+	}
+</script>
+<body>
+	<form id="channel_settings" action="#" method="post" enctype="multipart/form-data"></form>
+	<div class="wrapper">
+
+		<div class="page">
+			<div class="page__row">
+
+				<div class="page__element page__head">
+				 	<div class="mhead">
+						<div class="mhead__title">Программирование</div>
+						<div class="mhead__channel">Канал 2</div>
+						<a target="_blank" href="https://hi-garden.ru/aqua2-manual" class="mhead__manual xhref">Menu</a>
+					 </div>
+				</div>
+
+			  	<div class="page__element page__body">
+
+					<div class="mbody">
+
+					 <div class="status">
+						
+							{% csrf_token %}
+							<div class="status__row">
+									<div class="status__column  npp channelon">
+										<div class="titlew">
+											<a onClick="javascript:add_program()" href="#" class="myxhref">+<br>прог<br>рамм</a>
+										</div>
+									</div>
+
+									<div class="status__column wdays">
+										<div class="titlew">
+											Канал 2
+										</div>
+									</div>
+
+									<div class="status__column tbas">
+										<div class="titlew">Сезон<br>%<br></div>
+										<input type="number" name="seasonpc" value="100" />
+									</div>
+
+									<div class="status__column lbas">
+										<div class="titlew">°C<br>min</div>
+										<input type="number" name="cmindeg" value="10" />
+									</div>
+
+									<div class="status__column lbas">
+										<div class="titlew">°C<br>max</div>
+										<input type="number" name="cmaxdeg" value="30" />
+									</div>
+							</div>
+
+							<div class="status__row">
+
+								<div class="status__column  npp">
+									<div class="titlew">№<br>пп</div>
+								</div>
+
+								<div class="status__column  wdays">
+									<div class="titlew">&nbsp; Дни<br>недели</div>
+								</div>
+
+								<div class="status__column tbas">
+									<div class="titlew">Время<br>начала</div>
+								</div>
+
+								<div class="status__column lbas">
+									<div class="titlew">Вылив<br>min</div>
+								</div>
+
+								<div class="status__column lbas">
+									<div class="titlew">Вылив<br>max</div>
+								</div>
+
+							</div>
+
+							<div class="status__table">
+								
+									<div class="status__column">
+										<div class="titlew">
+											<a id="chn2" target="_blank" href="https://hi-garden.ru" class="myxhref">12</a>
+										</div>
+									</div>
+
+									<div class="status__column">
+										<div class="titlew">
+											<a id="chn2" target="_blank" href="https://hi-garden.ru" class="myxhref">1234567 чн</a>
+										</div>
+									</div>
+
+							</div>
+
+							<div class="status__row" style="margin: 1% 0;">
+
+								<div class="status__column" style="flex-basis: 90%;">
+									<div class="titlew">
+										<p style="text-align: left;">&nbsp; Импульсный режим:</p>
+										<p>импульс (c)  <input style="width: 40%;" type="number" name="meandr_on" value="60" size="2"/></p>
+										<p>пауза °Cmin<input style="width: 40%;" type="number" name="meaoff_cmin" value="0" /></p>
+										<p>пауза °Cmax<input style="width: 40%;" type="number" name="meaoff_cmax" value="0" /></p>
+									</div>
+								</div>
+
+								<div class="status__column" style="background-color: #2E8B57;">
+									<div class="titlew">
+										<p>Давление в системе:</p>
+										<p>минимум <input style="width: 40%;" type="number" name="press_on" value="2.1" /></p>
+										<p>максимум<input style="width: 40%;"type="number" name="press_off" value="3.8" /></p>
+										<p>(атм)</p>
+									</div>
+								</div>
+
+
+								<div class="status__column">
+									<div class="titlew">
+										<p><input type="checkbox" id="bige" name="lowlevel" value="no" /><br><br>Работа при<br>пустом баке</p>
+									</div>
+								</div>
+
+							</div>
+
+							<div class="status__row">
+
+								<div class="status__column">
+									<!--<div id="chn1_div" class="titleb">
+										<a onClick="javascript:save()" href="#" class="myxhref">Сохранить<br>&nbsp;</a>
+									</div>-->
+									<button type="button" name="save_prog"><img src="/img/save.png" alt="Сохранить" title="Сохранить" height=50px></button>
+								</div>
+
+								<div class="status__column">
+									<!--<div id="chn2_div" class="titleb">
+										<a id="chn2" target="_blank" href="https://hi-garden.ru" class="myxhref">Ручное<br>управление</a>
+									</div>-->
+									<button type="button" name="manual"><img src="/img/hand.png" alt="Ручное упр" title="Ручное упр" height=50px></button>
+								</div>
+
+								<div class="status__column">
+									<div class="titlew">
+										<p><input type="checkbox" id="bige" name="rainsens_on" value="yes" /><br><br>Использовать<br>датчик дождя</p>
+									</div>
+								</div>
+
+								<div class="status__column">
+									<div class="status__row">
+										<div class="status__column">
+											<div class="titlew">
+												<p><input type="radio" id="bige" name="tempsens" value="1" /> 1</p>
+												<br>
+												<p><input type="radio" id="bige" name="tempsens" value="2" /> 2</p>
+											</div>
+										</div>
+										<div class="status__column">
+											<br>
+											<div class="imgsm">
+												<img src="{% static 'img/measure.png' %}" width="120%"  alt="">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+					</div>
+
+				 	</div>
+			  	</div>
+
+			  	<div class="page__element page__footer">
+			  	</div>
+
+			</div>
+	</div>
+</body>
+</html>

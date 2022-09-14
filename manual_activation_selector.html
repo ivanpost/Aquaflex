@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=0">
+	<meta name="format-detection" content="telephone=no">
+	<title>Ручное включение</title>
+	<link rel="stylesheet" href="css/style.css">
+	{% load static %}
+	<!--<link rel="stylesheet" href="{% static 'css/style.css' %}">-->
+</head>
+{% include "includes/channels_selector_script.html" %}
+<body>
+	<div class="wrapper">
+
+		<div class="page">
+			<div class="page__row">
+
+				<div class="page__element page__head">
+				 <div class="mhead">
+					<a target="_blank" href="https://hi-garden.ru/" class="mhead__logo xhref">Hi-Garden</a>
+					<div class="mhead__title">Aquarius Hand</Main></div>
+					<a target="_blank" href="https://hi-garden.ru/aqua2-manual" class="mhead__manual xhref">Menu</a>		 
+				 </div>
+			
+				</div>
+
+			  <div class="page__element page__body">
+
+				<div class="mbody">
+
+					 <div class="status">
+
+						<div class="status__row">
+
+							<div class="status__column">
+								<div class="titlew"><br>&#8986; &nbsp; &nbsp; {{ cont.time|date:"G:i" }}</div>
+							</div>
+
+							<div class="status__column">
+								<div class="titlem">*</div>
+							</div>
+							
+						</div>
+
+						<div class="status__row">
+
+							<div class="status__column">
+								<div class="titlew">MQTT - {% if cont.esp_mqtt %}ОК{% else %}Нет подключения{% endif %}!</div>
+							</div>
+
+							<div class="status__column">
+								<div class="titlem">*</div>
+							</div>
+							
+						</div>
+
+
+						<div class="status__row">
+
+							<div class="status__column">
+								<div class="titlew">
+									Aquarius 294<br>Ягодное, Энерг 13
+								</div>
+							</div>
+
+							<div class="status__column">
+								<div class="titlem">*</div>
+							</div>
+							
+						</div>
+
+						<div class="status__row">
+
+							<div class="status__column">
+								<div class="titlem">*</div>
+							</div>
+
+							<div class="status__column">
+								<div class="titlem">*</div>
+							</div>
+
+							<div class="status__column">
+								<div class="titlem">*</div>
+							</div>
+
+						</div>
+
+						<div class="status__row">
+							<div class="status__column">
+								<div id="chns_selector_0" class="titlef folderon">
+									<a  onClick="javascript:set_channels(0, false);" role="button" href="#" class="myxhref">Каналы 1-10<br></a>
+									<div id="chns_selector_0_status" class="chnon">1, 7, 10</div>
+								</div>
+								
+							</div>
+
+							<div class="status__column">
+								<div id="chns_selector_1" class="titlef folderoff">
+									<a onClick="javascript:set_channels(1, false);" role="button" href="#" class="myxhref">Каналы 11-20<br></a>
+									<div id="chns_selector_1_status" class="chnon">11, 14, 19</div>
+								</div>
+
+							</div>
+
+							<div class="status__column">
+								<div id="chns_selector_2" class="titlef folderoff">
+									<a onClick="javascript:set_channels(2, false);" role="button" href="#" class="myxhref">Каналы 21-30<br></a>
+									<div id="chns_selector_2_status" class="chnon">-</div>
+								</div>
+
+							</div>
+
+						</div>
+
+
+						<div class="status__row">
+
+							<div class="status__column">
+								<div id="chn1_div" class="titlev channelon">
+									<a id="chn1" target="_blank" href="https://hi-garden.ru" class="myxhref">Канал 1</a>
+								</div>
+								
+							</div>
+
+							<div class="status__column">
+								<div id="chn2_div" class="titlev channeloff">
+									<a id="chn2" target="_blank" href="https://hi-garden.ru" class="myxhref">Канал 2</a>
+								</div>
+							</div>
+
+							<div class="status__column">
+								<div id="chn3_div" class="titlev channeloff">
+									<a id="chn3" target="_blank" href="https://hi-garden.ru" class="myxhref">Канал 3</a>
+								</div>
+							</div>
+
+							<div class="status__column">
+								<div id="chn4_div" class="titlev channeloff">
+									<a id="chn4" target="_blank" href="https://hi-garden.ru" class="myxhref">Канал 4</a>
+								</div>
+							</div>
+
+						</div>
+
+						<div class="status__row">
+
+							<div class="status__column">
+								<div id="chn5_div" class="titlev channeloff">
+									<a id="chn5" target="_blank" href="https://hi-garden.ru" class="myxhref">Канал 5</a>
+								</div>
+							</div>
+
+							<div class="status__column">
+								<div id="chn6_div" class="titlev channeloff">
+									<a id="chn6" target="_blank" href="https://hi-garden.ru" class="myxhref">Канал 6</a>
+								</div>
+							</div>
+
+							<div class="status__column">
+								<div id="chn7_div" class="titlev channeloff">
+									<a id="chn7" target="_blank" href="https://hi-garden.ru" class="myxhref">Канал 7</a>
+								</div>
+							</div>
+
+							<div class="status__column">
+								<div id="chn8_div" class="titlev channeloff">
+									<a id="chn8" target="_blank" href="https://hi-garden.ru" class="myxhref">Канал 8</a>
+								</div>
+							</div>
+
+						</div>
+
+						<div class="status__row">
+
+							<div class="status__column">
+								<div class="titlem">*</div>
+							</div>
+
+							<div class="status__column">
+								<div id="chn9_div" class="titlev channeloff">
+									<a id="chn9" target="_blank" href="https://hi-garden.ru" class="myxhref">Канал 9</a>
+								</div>
+							</div>
+
+							<div class="status__column">
+								<div id="chn10_div" class="titlev channeloff">
+									<a id="chn10" target="_blank" href="https://hi-garden.ru" class="myxhref">Канал 10</a>
+								</div>
+							</div>
+
+							<div class="status__column">
+								<div class="titlem">*</div>
+								
+							</div>
+
+						</div> 
+
+						<div class="status__row">
+							<div class="status__column">
+								<div class="titlem">*</div>
+							</div>
+
+							<div class="status__column">
+								<div class="titlem">*</div>
+							</div>
+
+							<div class="status__column">
+								<div class="titlev">
+									<form action="" method="post">
+										{% csrf_token %}
+										<input type="hidden" name="turn_off_all">
+										<a href="#" onclick="this.parentNode.submit()" class="myxhref">Выключить все</a>
+										<br>&nbsp;
+									</form>
+								</div>
+
+							</div>
+						</div>
+
+						<div class="status__row">
+
+							<div class="status__column">
+								<div class="titlew">Esp: 1.9.3</div>
+							</div>
+
+							<div class="status__column">
+								<div class="titlew">And: site</div>
+							</div>
+
+							<div class="status__column">
+								<div class="titlew">Avr: 159</div>
+							</div>
+
+						</div> 
+					</div>
+
+				 </div>
+			  </div>
+
+			  <div class="page__element page__footer">
+				<div class="fcontent">
+					<a target="_blank" href="https://hi-garden.ru/" class="mhead__manual xhref">Контроллеры орошения</a>
+				</div>
+			  </div>
+			</div>
+	</div>
+		<script type="text/javascript">
+			set_channels(0, false);
+			set_channels_status();
+		</script>
+</body>
+</html>
