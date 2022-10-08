@@ -7,9 +7,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, user-scalable=0">
 	<meta name="format-detection" content="telephone=no">
 	<title>Aquarius Канал</title>
-	<!--<link rel="stylesheet" href="css/style.css">-->
+	<link rel="stylesheet" href="css/style.css">
 	{% load static %}
-	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	<!--<link rel="stylesheet" href="{% static 'css/style.css' %}">-->
 </head>
 {% include "includes/utils.html" %}
 <div style="display: none;">
@@ -226,15 +226,19 @@
 									<button onClick="window.location.replace('{% url 'manual_activation' mqtt_user chn %}')" type="button" name="manual" form="channel_settings"><img src="{% static 'img/hand.png' %}" alt="Ручное упр" title="Ручное упр" height=50px></button>
 								</div>
 
-								<div class="status__column" style="flex: 0 0 26%; padding-top: 20px;">
-									<input {% if chan.rainsens %}checked{% endif %} type="checkbox" id="rainsens_on" name="rainsens_on" form="channel_settings" value="yes" /><label for="rainsens_on" style="display: inline;"><br>Использовать датчик дождя</label>
+								<div class="status__column" style="flex: 0 0 24%;">
+									<button onClick="window.location.replace('{% url 'manual_activation' mqtt_user chn %}')" type="button" name="manual" form="channel_settings" style="background-color: #2F4F4F;"><img src="img/rain.png" alt="Ручное упр" title="Ручное упр" height=90%></button>
 								</div>
+
+								<!--<div class="status__column" style="flex: 0 0 26%; padding-top: 20px;">
+									<input {% if chan.rainsens %}checked{% endif %} type="checkbox" id="rainsens_on" name="rainsens_on" form="channel_settings" value="yes" /><label for="rainsens_on" style="display: inline;"><br>Использовать датчик дождя</label>
+								</div>-->
 
 								<div class="status__column" style="flex: 0 0 13%; padding-top: 15px;">
 
-									<input {% if chan.tempsens == 1 %}checked{% endif %} type="radio" id="tempsens1" name="tempsens" form="channel_settings" value="1" /><label for="tempsens1">1<br>&nbsp;</label>
+									<input {% if chan.tempsens == 1 %}checked{% endif %} checked type="radio" id="tempsens1" name="tempsens" form="channel_settings" value="1" /><label for="tempsens1">1<br>&nbsp;</label>
 
-									<input {% if chan.tempsens == 2 %}checked{% endif %} type="radio" id="tempsens2" name="tempsens" value="2" /><label for="tempsens2">2</label>
+									<input {% if chan.tempsens == 2 %}checked{% endif %} type="radio" id="tempsens2" name="tempsens" form="channel_settings" value="2" /><label for="tempsens2">2</label>
 
 								</div>
 								<div class="status__column" style="flex: 0 0 13%;">
